@@ -2,65 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Campaign Routing...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forwarding to SocialPros Storefront...</title>
 </head>
 <body>
-    <p>Redirecting you to the official storefront...</p>
+    <div style="font-family: sans-serif; text-align: center; margin-top: 50px;">
+        <h2>Connecting to SocialPros.io...</h2>
+        <p>Please wait while we route you to the correct package channel.</p>
+    </div>
 
     <script>
-        // 1. Parse the inbound parameters from the browser URL bar
-        const params = new URLSearchParams(window.location.search);
-        const serviceType = params.get('mt') || 'generic_social';
+        // 1. Extract parameters from the address bar (e.g., ?mt=youtube_views)
+        const urlParams = new URLSearchParams(window.location.search);
+        const marketingTerm = urlParams.get('mt');
 
-        // 2. Define your clean destination domain
-        const baseDestination = "https://socialpros.io";
+        // 2. Define your primary domain
+        const targetDomain = "https://socialpros.io";
 
-        // 3. Map the parameters to your store's explicit landing categories
-        let finalPath = "";
-        if (serviceType === "youtube_views") {
-            finalPath = "buy-youtube-views/";
-        } else if (serviceType === "instagram_followers") {
-            finalPath = "buy-instagram-followers/";
+        // 3. Establish a standard configuration map for your categories
+        let targetPath = "";
+        
+        if (marketingTerm === "youtube_views") {
+            targetPath = "youtube/"; // Tracks back to your YouTube packages
+        } else if (marketingTerm === "instagram_followers") {
+            targetPath = "instagram/"; // Tracks back to your Instagram packages
         }
 
-        // 4. Construct a clean marketing URL using standard analytics markers
-        const cleanRedirectURL = `${baseDestination}${finalPath}?utm_source=github_pages&utm_medium=router_redirect&utm_campaign=${serviceType}`;
+        // 4. Combine into a clean destination string with appropriate UTM analytics tokens
+        const finalDestination = `${targetDomain}${targetPath}?utm_source=github_router&utm_medium=referral&utm_campaign=${marketingTerm || 'generic_visit'}`;
 
-        // 5. Execute a standard browser forward operation
-        window.location.href = cleanRedirectURL;
-    </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Campaign Routing...</title>
-</head>
-<body>
-    <p>Redirecting you to the official storefront...</p>
-
-    <script>
-        // 1. Parse the inbound parameters from the browser URL bar
-        const params = new URLSearchParams(window.location.search);
-        const serviceType = params.get('mt') || 'generic_social';
-
-        // 2. Define your clean destination domain
-        const baseDestination = "https://socialpros.io";
-
-        // 3. Map the parameters to your store's explicit landing categories
-        let finalPath = "";
-        if (serviceType === "youtube_views") {
-            finalPath = "buy-youtube-views/";
-        } else if (serviceType === "instagram_followers") {
-            finalPath = "buy-instagram-followers/";
-        }
-
-        // 4. Construct a clean marketing URL using standard analytics markers
-        const cleanRedirectURL = `${baseDestination}${finalPath}?utm_source=github_pages&utm_medium=router_redirect&utm_campaign=${serviceType}`;
-
-        // 5. Execute a standard browser forward operation
-        window.location.href = cleanRedirectURL;
+        // 5. Execute the browser redirect operation
+        window.location.href = finalDestination;
     </script>
 </body>
 </html>
