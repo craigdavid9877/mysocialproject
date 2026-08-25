@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Campaign Routing...</title>
+</head>
+<body>
+    <p>Redirecting you to the official storefront...</p>
+
+    <script>
+        // 1. Parse the inbound parameters from the browser URL bar
+        const params = new URLSearchParams(window.location.search);
+        const serviceType = params.get('mt') || 'generic_social';
+
+        // 2. Define your clean destination domain
+        const baseDestination = "https://socialpros.io";
+
+        // 3. Map the parameters to your store's explicit landing categories
+        let finalPath = "";
+        if (serviceType === "youtube_views") {
+            finalPath = "buy-youtube-views/";
+        } else if (serviceType === "instagram_followers") {
+            finalPath = "buy-instagram-followers/";
+        }
+
+        // 4. Construct a clean marketing URL using standard analytics markers
+        const cleanRedirectURL = `${baseDestination}${finalPath}?utm_source=github_pages&utm_medium=router_redirect&utm_campaign=${serviceType}`;
+
+        // 5. Execute a standard browser forward operation
+        window.location.href = cleanRedirectURL;
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Campaign Routing...</title>
+</head>
+<body>
+    <p>Redirecting you to the official storefront...</p>
+
+    <script>
+        // 1. Parse the inbound parameters from the browser URL bar
+        const params = new URLSearchParams(window.location.search);
+        const serviceType = params.get('mt') || 'generic_social';
+
+        // 2. Define your clean destination domain
+        const baseDestination = "https://socialpros.io";
+
+        // 3. Map the parameters to your store's explicit landing categories
+        let finalPath = "";
+        if (serviceType === "youtube_views") {
+            finalPath = "buy-youtube-views/";
+        } else if (serviceType === "instagram_followers") {
+            finalPath = "buy-instagram-followers/";
+        }
+
+        // 4. Construct a clean marketing URL using standard analytics markers
+        const cleanRedirectURL = `${baseDestination}${finalPath}?utm_source=github_pages&utm_medium=router_redirect&utm_campaign=${serviceType}`;
+
+        // 5. Execute a standard browser forward operation
+        window.location.href = cleanRedirectURL;
+    </script>
+</body>
+</html>
